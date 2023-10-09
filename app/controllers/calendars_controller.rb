@@ -34,7 +34,11 @@ class CalendarsController < ApplicationController
       plans.each do |plan|
         today_plans.push(plan.plan) if plan.date == @todays_date + x
       end
-      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day, :plans => today_plans}
+      # 日付の曜日を取得して、例) 4/15(水) のように表示するための文字列を生成
+      day_of_week = @todays_date + x
+      # 日付の曜日の表示を修正
+      formatted_date = "#{day_of_week.month}/#{day_of_week.day}#{wdays[day_of_week.wday]}"
+      days = { :date => formatted_date, :plans => today_plans}
       @week_days.push(days)
     end
 
