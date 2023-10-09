@@ -38,7 +38,7 @@ class CalendarsController < ApplicationController
       day_of_week = @todays_date + x
       # 日付の曜日の表示を修正
       formatted_date = "#{day_of_week.month}/#{day_of_week.day}#{wdays[day_of_week.wday]}"
-      days = { :date => formatted_date, :plans => today_plans}
+      days = { date: formatted_date, plans: today_plans }
       @week_days.push(days)
     end
 
